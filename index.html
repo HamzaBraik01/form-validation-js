@@ -21,18 +21,40 @@
         <button type="submit">Register</button>
     </form>
     <script>
-        var username=document.getElementById('username').value;
-        var email=document.getElementById('email').value;
-        var password=document.getElementById('password').value;
-        var confirmpassword=document.getElementById('confirmpassword').value;
-        var errorMassege=document.getElementById('errorMassege');
-        var text="";
+        
         function validation(){
-            if(username == "" && email == "" &&  password == "" &&  confirmpassword == ""){
+            var username=document.getElementById('username').value;
+            var email=document.getElementById('email').value;
+            var password=document.getElementById('password').value;
+            var confirmpassword=document.getElementById('confirmpassword').value;
+            var errorMassege=document.getElementById('errorMassege');
+            var text="";
+            if(username === "" && email === "" &&  password === "" &&  confirmpassword === ""){
                 text="Please Insert Valid data";
                 errorMassege.innerHTML=text;
                 errorMassege.style.display="block";
                 return false;
+            }
+            else if (email.indexOf("@") === -1){
+                text="Please enter a Valid email";
+                errorMassege.innerHTML=text;
+                errorMassege.style.display="block";
+                return false;
+            }
+            else if (password.length < 8){
+                text="please insert at least 8 character in the password";
+                errorMassege.innerHTML=text;
+                errorMassege.style.display="block";
+                return false;
+            }
+            else if (confirmpassword !== password){
+                text="passwords do not match";
+                errorMassege.innerHTML=text;
+                errorMassege.style.display="block";
+                return false;
+            }
+            else {
+                return true; 
             }
         }
     </script>
